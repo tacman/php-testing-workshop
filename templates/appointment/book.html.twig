@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title "Book your appointment with #{specialist.fullName}" %}
+
+{% block page_title block('title') %}
+
+{% block body %}
+
+    <main>
+
+        <div class="mx-auto max-w-7xl mt-4 overflow-hidden rounded-lg bg-white shadow">
+
+            <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
+                <div class="-ml-4 -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap">
+                    <div class="ml-4 mt-4">
+                        <div class="flex items-center">
+                            <div class="shrink-0">
+                                <img class="size-12 rounded-full" src="{{ asset(specialist.profilePictureUrl) }}" alt="">
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm text-gray-500">
+                                    {{ specialist.introduction }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ml-4 mt-4 flex shrink-0"></div>
+                </div>
+            </div>
+        </div>
+
+        <form method="POST" novalidate="novalidate">
+            <div class="mx-auto max-w-7xl mt-10 overflow-hidden rounded-lg bg-white shadow">
+                <div class="px-4 py-5 sm:px-6">
+                    <h2 class="text-base font-semibold text-gray-900">
+                        Appointment Booking
+                    </h2>
+                </div>
+                <div class="bg-gray-50 px-4 py-5 sm:p-6">
+                    {{ form_errors(form) }}
+                    <div class="grid grid-cols-4 gap-4">
+                        <div class="col-span-3 sm:col-span-2">
+                            {{ form_label(form.firstName) }}
+                            {{ form_errors(form.firstName) }}
+                            <div class="mt-2">
+                                {{ form_widget(form.firstName, {attr: {class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+                            </div>
+                        </div>
+
+                        <div class="col-span-3 sm:col-span-2">
+                            {{ form_label(form.lastName) }}
+                            {{ form_errors(form.lastName) }}
+                            <div class="mt-2">
+                                {{ form_widget(form.lastName, {attr: {class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+                            </div>
+                        </div>
+
+                        <div class="col-span-3 sm:col-span-2">
+                            {{ form_label(form.email) }}
+                            {{ form_errors(form.email) }}
+                            <div class="mt-2">
+                                {{ form_widget(form.email, {attr: {class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+                            </div>
+                        </div>
+
+                        <div class="col-span-3 sm:col-span-2">
+                            {{ form_label(form.phone) }}
+                            {{ form_errors(form.phone) }}
+                            <div class="mt-2">
+                                {{ form_widget(form.phone, {attr: {class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50'}}) }}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 px-4 py-8 sm:px-6">
+                    {{ form_widget(form._token) }}
+                    {{ form_widget(form.submit, {
+                        label: 'Book my appointment',
+                        attr: {
+                            class: 'inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600'
+                        }
+                    }) }}
+                </div>
+
+            </div>
+        </form>
+
+    </main>
+
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Appointment with #{specialist.fullName} on #{appointment.openingAt|date('m/d/Y')}" %}
+
+{% block page_title block('title') %}
+
+{% block body %}
+
+    <main>
+
+        <div class="mx-auto max-w-7xl mt-4 overflow-hidden rounded-lg bg-white shadow">
+
+            <div class="border-b border-gray-200 bg-white px-4 py-5 sm:px-6">
+                <div class="-ml-4 -mt-4 flex flex-wrap items-center justify-between sm:flex-nowrap">
+                    <div class="ml-4 mt-4">
+                        <div class="flex items-center">
+                            <div class="shrink-0">
+                                <img class="size-12 rounded-full" src="{{ asset(specialist.profilePictureUrl) }}" alt="">
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-sm text-gray-500">
+                                    {{ specialist.introduction }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ml-4 mt-4 flex shrink-0"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mx-auto max-w-7xl mt-10 overflow-hidden rounded-lg bg-white shadow">
+            <div class="px-4 py-5 sm:px-6">
+                <h2 class="text-base font-semibold text-gray-900">
+                    Appointment / <strong>{{ appointment.referenceNumber }}</strong>
+                </h2>
+            </div>
+
+            <div class="bg-gray-50 px-4 py-5 sm:p-6">
+
+                <p class="text-center">
+                    Your {{ appointment.specialty.value }} appointment is scheduled on <strong>{{ appointment.openingAt|date('m/d/Y') }}</strong> between <strong>{{ appointment.openingAt|date('H:i') }}</strong> and <strong>{{ appointment.closingAt|date('H:i') }}</strong>.
+                </p>
+
+            </div>
+
+            <div class="bg-gray-50 px-4 py-8 sm:px-6">
+                <!-- Add links or buttons if needed -->
+            </div>
+
+        </div>
+
+        <form action="{{ path('app_appointment_cancel', {id: appointment.id}) }}" method="POST">
+
+            <div class="mx-auto max-w-7xl mt-10 overflow-hidden rounded-lg bg-white shadow">
+                <div class="px-4 py-5 sm:px-6">
+                    <h2 class="text-base font-semibold text-gray-900">
+                        Want to cancel your appointment?
+                    </h2>
+                </div>
+
+                <div class="bg-gray-50 px-4 py-5 sm:p-6">
+                    <div class="col-span-3 sm:col-span-2">
+                        <label for="medical_appointment_cancellation_reason" class="required">Reason</label>
+
+                        <div class="mt-2">
+                            <input type="text"
+                                   id="medical_appointment_cancellation_reason"
+                                   name="cancellation_reason"
+                                   placeholder="Please tell us why you cancelled your appointment"
+                                   required="required"
+                                   class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 px-4 py-8 sm:px-6">
+                    <input type="hidden" name="_token" value="{{ csrf_token('cancel-appointment-' ~ appointment.id) }}">
+                    <button type="submit" class="inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Cancel my appointment</button>
+                </div>
+
+            </div>
+
+        </form>
+
+    </main>
+
+{% endblock %}

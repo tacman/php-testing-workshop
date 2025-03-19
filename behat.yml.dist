@@ -1,0 +1,14 @@
+default:
+    suites:
+        default:
+            contexts:
+                - App\Tests\Behat\BookAppointmentContext
+                - App\Tests\Behat\DemoContext
+
+    extensions:
+        DAMA\DoctrineTestBundle\Behat\ServiceContainer\DoctrineExtension: ~
+
+        FriendsOfBehat\SymfonyExtension:
+            kernel:
+                environment: test
+            bootstrap: tests/bootstrap.php

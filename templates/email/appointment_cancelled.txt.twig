@@ -1,0 +1,9 @@
+{# @var appointment \App\Entity\MedicalAppointment #}
+Dear {{ appointment.firstName }},
+
+We inform you that your {{ appointment.specialty.value }} appointment ({{ appointment.referenceNumber}}) with doctor {{ appointment.practitioner }} scheduled on {{ appointment.date | date('Y-m-d') }} at {{ appointment.time | date('H:i') }} has been cancelled.
+
+* Reference number: {{ appointment.referenceNumber }}
+* Reason: {{ appointment.cancellationReason | default('n/a')}}
+
+Sincerely yours,
