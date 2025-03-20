@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\src\DataFixtures;
+namespace App\DataFixtures;
 
 use App\Entity\MedicalSpecialty;
-use App\src\Factory\AgendaFactory;
-use App\src\Factory\HealthSpecialistFactory;
-use App\src\Factory\MedicalAppointmentFactory;
+use App\Factory\AgendaFactory;
+use App\Factory\HealthSpecialistFactory;
+use App\Factory\MedicalAppointmentFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
