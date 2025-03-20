@@ -57,6 +57,7 @@ final class BookAppointmentFeatureTest extends PantherTestCase
             ->assertSee('Check another date?')
             ->fillField('date', $tomorrow->format('Y-m-d'))
             ->click('Search')
+            ->waitUntilSeeIn($availabilityId, '18:00')
             ->click($availabilityId)
             ->fillField('medical_appointment_booking[firstName]', 'Lauren')
             ->fillField('medical_appointment_booking[lastName]', 'Montgomery')
