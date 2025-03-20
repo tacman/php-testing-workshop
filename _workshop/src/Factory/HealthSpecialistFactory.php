@@ -1,6 +1,6 @@
 <?php
 
-namespace App\src\Factory;
+namespace App\Factory;
 
 use App\Entity\HealthSpecialist;
 use App\Entity\MedicalSpecialty;

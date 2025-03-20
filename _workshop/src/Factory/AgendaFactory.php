@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\src\Factory;
+namespace App\Factory;
 
 use App\Entity\Agenda;
 use App\Service\GenerateAgendaCalendar;
