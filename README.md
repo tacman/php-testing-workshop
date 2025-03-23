@@ -7,7 +7,7 @@
 If you want to use Docker, copy the `compose.postgresql.yaml.dist` file to `compose.yaml`.
 
 ```bash
-$ cp compose.postgresql.yaml.dist compose.yaml
+cp compose.postgresql.yaml.dist compose.yaml
 ```
 
 Update your `.env` file with the PostgreSQL database URL.
@@ -108,13 +108,13 @@ doctrine:
 ```bash
 # If you want to use Docker,
 # First, build the environment (database server & mail catcher).
-$ docker compose up --build
+docker compose up --build
 
 # Then, build the demo app (dependencies, database, data fixtures, etc.).
-$ symfony composer dev:install
+symfony composer dev:install
 
 # Finally, serve the demo app (HTTP Web server).
-$ symfony server:start
+symfony server:start
 
 # And browse the following URL in your Web browser to discover the app
 # https://localhost:8000
@@ -135,11 +135,11 @@ $ (symfony) php -d xdebug.mode=coverage bin/phpunit
 Running Panther in Chrome.
 
 ```bash
-$ PANTHER_NO_HEADLESS=1 (symfony) php bin/phpunit
+PANTHER_NO_HEADLESS=1 (symfony) php bin/phpunit
 ```
 
 Runner PHPUnit with Paratest.
 
 ```bash
-$ XDEBUG_MODE=coverage (symfony) php vendor/bin/paratest
+XDEBUG_MODE=coverage (symfony) php vendor/bin/paratest
 ```
